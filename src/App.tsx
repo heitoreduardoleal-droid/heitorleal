@@ -1,814 +1,880 @@
-import { useState, useEffect } from 'react'
-
-const CTA_LINK = "https://pay.kirvano.com/668f849f-f59b-4bc5-8fc9-f3693bb9e3de"
+import { useState } from 'react';
+import { CheckCircle2, Lock, Flame, Zap, Target, Shield, Clock, ChevronRight, Crown, Brain, Heart, MessageCircle, Calendar, Star, X } from 'lucide-react';
 
 function App() {
-  const [showScrollTop, setShowScrollTop] = useState(false)
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setShowScrollTop(window.scrollY > 500)
-    }
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
-
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' })
-  }
+  const [isHovered, setIsHovered] = useState(false);
+  const paymentLink = "https://pay.hotmart.com/W105482080M";
 
   return (
-    <div className="min-h-screen bg-black text-white">
-      {/* Floating CTA Button (Mobile) */}
-      <div className="fixed bottom-0 left-0 right-0 z-50 p-4 md:hidden bg-gradient-to-t from-black via-black to-transparent">
-        <a 
-          href={CTA_LINK}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="block w-full bg-gradient-to-r from-red-600 to-red-500 text-white font-bold text-center py-4 px-6 rounded-lg shadow-lg shadow-red-500/30 hover:shadow-red-500/50 transform hover:scale-105 transition-all duration-300 text-lg uppercase"
-        >
-          🚀 Quero Dominar o Jogo
-        </a>
-      </div>
-
-      {/* HERO SECTION */}
-      <section className="min-h-screen flex items-center justify-center px-4 py-16 relative overflow-hidden">
-        {/* Background Effects */}
-        <div className="absolute inset-0 bg-gradient-to-b from-gray-900 via-black to-black"></div>
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-red-600/10 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-yellow-600/5 rounded-full blur-3xl"></div>
+    <div className="bg-black text-white min-h-screen">
+      {/* Hero Section */}
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+        {/* Background with gradient */}
+        <div className="absolute inset-0 bg-gradient-to-br from-black via-red-950/20 to-black"></div>
+        <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0zNiAxOGMzLjMxNCAwIDYgMi42ODYgNiA2cy0yLjY4NiA2LTYgNi02LTIuNjg2LTYtNiAyLjY4Ni02IDYtNnoiIHN0cm9rZT0iIzMzMyIgc3Ryb2tlLXdpZHRoPSIxIi8+PC9nPjwvc3ZnPg==')] opacity-10"></div>
         
-        <div className="relative z-10 max-w-5xl mx-auto text-center">
-          {/* Badge */}
-          <div className="inline-block mb-6 bg-gradient-to-r from-red-600 to-red-500 text-white text-sm font-bold px-6 py-2 rounded-full uppercase tracking-wider animate-pulse">
-            🔥 Conteúdo Restrito
-          </div>
-
-          {/* Headline */}
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-black mb-6 leading-tight">
-            <span className="text-white">Você não foi rejeitado…</span><br />
-            <span className="bg-gradient-to-r from-red-500 to-yellow-500 bg-clip-text text-transparent">
-              só nunca aprendeu o jogo.
-            </span>
-          </h1>
-
-          {/* Subheadline */}
-          <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed">
-            O manual que <span className="text-yellow-500 font-bold">ninguém te ensinou</span> sobre atração e dominância. 
-            Desenvolva mentalidade inabalável, gera interesse natural e conquiste mulheres nota <span className="text-red-500 font-bold">8, 9 e 10</span>.
-          </p>
-
-          {/* Trigger Phrases */}
-          <div className="flex flex-wrap justify-center gap-3 mb-10">
-            <span className="bg-gray-800/80 border border-gray-700 px-4 py-2 rounded-full text-sm text-gray-300">
-              ⚡ Domine a mente feminina
-            </span>
-            <span className="bg-gray-800/80 border border-gray-700 px-4 py-2 rounded-full text-sm text-gray-300">
-              💪 Conquiste sua melhor versão
-            </span>
-            <span className="bg-gray-800/80 border border-gray-700 px-4 py-2 rounded-full text-sm text-gray-300">
-              🎯 Não seja mais ignorado
-            </span>
-          </div>
-
-          {/* CTA Button */}
-          <a 
-            href={CTA_LINK}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-block bg-gradient-to-r from-red-600 to-red-500 text-white font-black text-xl px-12 py-5 rounded-lg shadow-2xl shadow-red-500/40 hover:shadow-red-500/60 transform hover:scale-105 transition-all duration-300 uppercase tracking-wider mb-6"
-          >
-            🔥 Quero Dominar o Jogo Agora
-          </a>
-
-          {/* Urgency Text */}
-          <p className="text-gray-400 text-sm">
-            ⏰ Acesso imediato • 100% digital • Privado e seguro
-          </p>
-        </div>
-      </section>
-
-      {/* QUEBRA DE CRENÇA */}
-      <section className="py-20 px-4 bg-gradient-to-b from-black to-gray-900">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-5xl font-black mb-6">
-              <span className="text-red-500">😡 O Problema</span> Não É Você
-            </h2>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-              Você não é o problema. Você só está jogando sem saber as regras.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {/* Erro 1 */}
-            <div className="bg-gray-800/50 border border-gray-700 rounded-2xl p-8 hover:border-red-500/50 transition-all duration-300">
-              <div className="text-5xl mb-4">🥺</div>
-              <h3 className="text-xl font-bold text-red-500 mb-3">Ser Bonzinho Demais</h3>
-              <p className="text-gray-300">
-                Colocar mulheres em pedestal e agradar demais só te coloca na friendzone. Mulheres buscam liderança, não submissão.
-              </p>
+        <div className="container mx-auto px-4 py-20 relative z-10">
+          <div className="max-w-5xl mx-auto text-center">
+            {/* Badge */}
+            <div className="inline-flex items-center gap-2 bg-red-600/20 border border-red-600/50 px-4 py-2 rounded-full mb-8 animate-pulse">
+              <Flame className="w-4 h-4 text-red-500" />
+              <span className="text-red-400 text-sm font-semibold tracking-wide">CONTEÚDO EXCLUSIVO • ACESSO PODE SAIR DO AR</span>
             </div>
 
-            {/* Erro 2 */}
-            <div className="bg-gray-800/50 border border-gray-700 rounded-2xl p-8 hover:border-red-500/50 transition-all duration-300">
-              <div className="text-5xl mb-4">🤷</div>
-              <h3 className="text-xl font-bold text-red-500 mb-3">Achar Que Beleza É Tudo</h3>
-              <p className="text-gray-300">
-                Caras bonitos ficam sozinhos. O que realmente atrai é <span className="text-yellow-500 font-bold">comportamento, confiança e postura</span>.
-              </p>
-            </div>
-
-            {/* Erro 3 */}
-            <div className="bg-gray-800/50 border border-gray-700 rounded-2xl p-8 hover:border-red-500/50 transition-all duration-300">
-              <div className="text-5xl mb-4">😶</div>
-              <h3 className="text-xl font-bold text-red-500 mb-3">Não Saber Conduzir</h3>
-              <p className="text-gray-300">
-                Deixar a interação morrer, não saber o que falar, ter medo de arriscar. Sem direção, você fica no mesmo lugar.
-              </p>
-            </div>
-          </div>
-
-          <div className="text-center mt-12">
-            <p className="text-2xl font-bold text-white">
-              O problema não é você. É a <span className="text-red-500">falta de conhecimento</span>.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* APRESENTAÇÃO DO PRODUTO */}
-      <section className="py-20 px-4 bg-gradient-to-b from-gray-900 to-black">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-5xl font-black mb-6">
-              Apresentamos o<br />
-              <span className="bg-gradient-to-r from-red-500 to-yellow-500 bg-clip-text text-transparent">
-                Manual da Dominância
+            {/* Headline */}
+            <h1 className="text-5xl md:text-7xl font-black mb-6 leading-tight">
+              <span className="bg-gradient-to-r from-white via-red-200 to-amber-300 bg-clip-text text-transparent">
+                Você não foi rejeitado...
               </span>
-            </h2>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-              O atalho que você sempre procurou para entender o jogo social.
+              <br />
+              <span className="text-white">
+                Só nunca aprendeu o jogo.
+              </span>
+            </h1>
+
+            {/* Subheadline */}
+            <p className="text-xl md:text-2xl text-gray-300 mb-4 max-w-3xl mx-auto leading-relaxed">
+              O manual que ninguém te ensinou sobre <span className="text-red-500 font-bold">atração real</span>, 
+              <span className="text-amber-400 font-bold"> dominância social</span> e como 
+              <span className="text-red-500 font-bold"> conquistar mulheres nota 8, 9 e 10</span>.
+            </p>
+
+            <p className="text-lg text-gray-400 mb-12 max-w-2xl mx-auto">
+              Desenvolva mentalidade de vencedor, domine a mente feminina e nunca mais seja ignorado por mulheres lindas.
+            </p>
+
+            {/* CTA Button */}
+            <a
+              href={paymentLink}
+              className="inline-flex items-center gap-3 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white px-8 py-5 rounded-lg text-xl font-bold transition-all transform hover:scale-105 shadow-2xl shadow-red-600/50 group"
+              onMouseEnter={() => setIsHovered(true)}
+              onMouseLeave={() => setIsHovered(false)}
+            >
+              <Crown className="w-6 h-6" />
+              QUERO DOMINAR O JOGO AGORA
+              <ChevronRight className={`w-6 h-6 transition-transform ${isHovered ? 'translate-x-1' : ''}`} />
+            </a>
+
+            <p className="text-sm text-gray-500 mt-4">
+              <Lock className="w-4 h-4 inline mr-1" />
+              Acesso imediato • Garantia de 7 dias
             </p>
           </div>
+        </div>
 
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            {/* Book Mockup */}
-            <div className="relative">
-              <div className="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-600/50 rounded-lg p-6 shadow-2xl shadow-yellow-500/20 transform rotate-2 hover:rotate-0 transition-all duration-500">
-                <div className="bg-black rounded-lg p-8 border border-gray-700">
-                  <div className="text-center">
-                    <div className="text-6xl mb-4">📕</div>
-                    <h3 className="text-2xl font-black text-white mb-2">MANUAL DA</h3>
-                    <h3 className="text-3xl font-black bg-gradient-to-r from-red-500 to-yellow-500 bg-clip-text text-transparent mb-4">
-                      DOMINÂNCIA
-                    </h3>
-                    <div className="border-t border-gray-700 pt-4 mt-4">
-                      <p className="text-gray-400 text-sm">Atração • Conexão • Sedução</p>
+        {/* Scroll indicator */}
+        <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+          <div className="w-6 h-10 border-2 border-gray-600 rounded-full flex justify-center">
+            <div className="w-1 h-3 bg-red-500 rounded-full mt-2"></div>
+          </div>
+        </div>
+      </section>
+
+      {/* Stats Section */}
+      <section className="py-12 bg-gradient-to-r from-red-950/30 to-amber-950/30 border-y border-red-900/20">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-5xl mx-auto">
+            <div className="text-center">
+              <div className="text-4xl font-black text-red-500 mb-2">6</div>
+              <div className="text-sm text-gray-400 uppercase tracking-wide">Capítulos Práticos</div>
+            </div>
+            <div className="text-center">
+              <div className="text-4xl font-black text-amber-400 mb-2">100%</div>
+              <div className="text-sm text-gray-400 uppercase tracking-wide">Método Direto</div>
+            </div>
+            <div className="text-center">
+              <div className="text-4xl font-black text-red-500 mb-2">7</div>
+              <div className="text-sm text-gray-400 uppercase tracking-wide">Dias de Garantia</div>
+            </div>
+            <div className="text-center">
+              <div className="text-4xl font-black text-amber-400 mb-2">24h</div>
+              <div className="text-sm text-gray-400 uppercase tracking-wide">Acesso Imediato</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Quebra de Crença */}
+      <section className="py-20 bg-black">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl md:text-5xl font-black mb-6">
+                <span className="text-red-500">Por que você não consegue</span><br />
+                conquistar mulheres de alto valor?
+              </h2>
+              <p className="text-xl text-gray-400">
+                Não é culpa sua. Você nunca aprendeu as regras do jogo.
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-3 gap-6 mb-12">
+              <div className="bg-gradient-to-br from-red-950/30 to-black border border-red-900/30 p-8 rounded-xl">
+                <div className="w-12 h-12 bg-red-600/20 rounded-lg flex items-center justify-center mb-4">
+                  <X className="w-6 h-6 text-red-500" />
+                </div>
+                <h3 className="text-xl font-bold mb-3 text-red-400">Erro #1</h3>
+                <p className="text-gray-300 leading-relaxed">
+                  <span className="font-bold">Ser "bonzinho" demais</span> e achar que ser gentil é suficiente para gerar atração.
+                </p>
+              </div>
+
+              <div className="bg-gradient-to-br from-red-950/30 to-black border border-red-900/30 p-8 rounded-xl">
+                <div className="w-12 h-12 bg-red-600/20 rounded-lg flex items-center justify-center mb-4">
+                  <X className="w-6 h-6 text-red-500" />
+                </div>
+                <h3 className="text-xl font-bold mb-3 text-red-400">Erro #2</h3>
+                <p className="text-gray-300 leading-relaxed">
+                  <span className="font-bold">Achar que beleza é tudo</span> e se sabotar antes mesmo de tentar.
+                </p>
+              </div>
+
+              <div className="bg-gradient-to-br from-red-950/30 to-black border border-red-900/30 p-8 rounded-xl">
+                <div className="w-12 h-12 bg-red-600/20 rounded-lg flex items-center justify-center mb-4">
+                  <X className="w-6 h-6 text-red-500" />
+                </div>
+                <h3 className="text-xl font-bold mb-3 text-red-400">Erro #3</h3>
+                <p className="text-gray-300 leading-relaxed">
+                  <span className="font-bold">Não saber conduzir</span> uma interação e perder oportunidades por insegurança.
+                </p>
+              </div>
+            </div>
+
+            <div className="bg-gradient-to-r from-amber-950/20 to-red-950/20 border-l-4 border-amber-500 p-6 rounded-lg">
+              <p className="text-lg text-gray-200">
+                <span className="text-amber-400 font-bold">A verdade é:</span> O problema não é você. 
+                É a <span className="font-bold text-white">falta de conhecimento estratégico</span> sobre como a atração realmente funciona.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Apresentação do Produto */}
+      <section className="py-20 bg-gradient-to-b from-black to-red-950/10">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-16">
+              <div className="inline-flex items-center gap-2 bg-amber-600/20 border border-amber-600/50 px-4 py-2 rounded-full mb-6">
+                <Crown className="w-4 h-4 text-amber-400" />
+                <span className="text-amber-400 text-sm font-semibold tracking-wide">APRESENTANDO</span>
+              </div>
+              
+              <h2 className="text-5xl md:text-6xl font-black mb-6">
+                <span className="bg-gradient-to-r from-amber-400 to-red-500 bg-clip-text text-transparent">
+                  Manual da Dominância
+                </span>
+              </h2>
+              
+              <p className="text-2xl text-gray-300 mb-8 leading-relaxed">
+                O guia definitivo para conquistar sua melhor versão e dominar o jogo da atração
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-3 gap-6 mb-12">
+              <div className="bg-gradient-to-br from-gray-900 to-black border border-gray-800 p-6 rounded-xl text-center">
+                <div className="w-16 h-16 bg-gradient-to-br from-red-600 to-amber-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Zap className="w-8 h-8 text-white" />
+                </div>
+                <h3 className="font-bold text-lg mb-2">Direto ao Ponto</h3>
+                <p className="text-gray-400 text-sm">Sem enrolação. Só estratégias que funcionam.</p>
+              </div>
+
+              <div className="bg-gradient-to-br from-gray-900 to-black border border-gray-800 p-6 rounded-xl text-center">
+                <div className="w-16 h-16 bg-gradient-to-br from-red-600 to-amber-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Brain className="w-8 h-8 text-white" />
+                </div>
+                <h3 className="font-bold text-lg mb-2">Baseado em Psicologia</h3>
+                <p className="text-gray-400 text-sm">Comportamento, emoção e prática real.</p>
+              </div>
+
+              <div className="bg-gradient-to-br from-gray-900 to-black border border-gray-800 p-6 rounded-xl text-center">
+                <div className="w-16 h-16 bg-gradient-to-br from-red-600 to-amber-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Target className="w-8 h-8 text-white" />
+                </div>
+                <h3 className="font-bold text-lg mb-2">Atalho Comprovado</h3>
+                <p className="text-gray-400 text-sm">Aprenda em horas o que levaria anos.</p>
+              </div>
+            </div>
+
+            <div className="text-center">
+              <a
+                href={paymentLink}
+                className="inline-flex items-center gap-3 bg-gradient-to-r from-amber-500 to-red-600 hover:from-amber-600 hover:to-red-700 text-white px-10 py-6 rounded-lg text-xl font-bold transition-all transform hover:scale-105 shadow-2xl shadow-amber-600/30"
+              >
+                <Crown className="w-6 h-6" />
+                QUERO DOMINAR O JOGO AGORA
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* O Que Você Vai Aprender */}
+      <section className="py-20 bg-black">
+        <div className="container mx-auto px-4">
+          <div className="max-w-5xl mx-auto">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl md:text-5xl font-black mb-6">
+                O que você vai aprender no<br />
+                <span className="bg-gradient-to-r from-amber-400 to-red-500 bg-clip-text text-transparent">
+                  Manual da Dominância
+                </span>
+              </h2>
+              <p className="text-xl text-gray-400">
+                6 capítulos estratégicos que vão transformar seu jogo completamente
+              </p>
+            </div>
+
+            <div className="space-y-6">
+              {/* Capítulo 1 */}
+              <div className="bg-gradient-to-br from-red-950/20 to-black border border-red-900/30 p-8 rounded-xl hover:border-red-600/50 transition-all">
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 bg-gradient-to-br from-red-600 to-amber-600 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <Brain className="w-6 h-6 text-white" />
+                  </div>
+                  <div className="flex-1">
+                    <div className="flex items-center gap-3 mb-3">
+                      <span className="text-sm font-bold text-red-500 bg-red-950/50 px-3 py-1 rounded-full">CAPÍTULO 1</span>
+                      <h3 className="text-2xl font-bold">A Sua Mente</h3>
                     </div>
+                    <ul className="space-y-3">
+                      <li className="flex items-start gap-3">
+                        <CheckCircle2 className="w-5 h-5 text-amber-400 flex-shrink-0 mt-0.5" />
+                        <span className="text-gray-300">Como <span className="text-white font-semibold">reprogramar suas crenças limitantes</span> e desenvolver mentalidade de vencedor</span>
+                      </li>
+                      <li className="flex items-start gap-3">
+                        <CheckCircle2 className="w-5 h-5 text-amber-400 flex-shrink-0 mt-0.5" />
+                        <span className="text-gray-300">Desenvolver <span className="text-white font-semibold">confiança real e sólida</span> que se reflete em tudo que você faz</span>
+                      </li>
+                      <li className="flex items-start gap-3">
+                        <CheckCircle2 className="w-5 h-5 text-amber-400 flex-shrink-0 mt-0.5" />
+                        <span className="text-gray-300">Eliminar as <span className="text-white font-semibold">inseguranças invisíveis</span> que te sabotam sem você perceber</span>
+                      </li>
+                    </ul>
                   </div>
                 </div>
               </div>
-              {/* Badge */}
-              <div className="absolute -top-4 -right-4 bg-red-600 text-white font-bold px-4 py-2 rounded-lg transform rotate-12 shadow-lg">
-                NOVO
+
+              {/* Capítulo 2 */}
+              <div className="bg-gradient-to-br from-red-950/20 to-black border border-red-900/30 p-8 rounded-xl hover:border-red-600/50 transition-all">
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 bg-gradient-to-br from-red-600 to-amber-600 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <Heart className="w-6 h-6 text-white" />
+                  </div>
+                  <div className="flex-1">
+                    <div className="flex items-center gap-3 mb-3">
+                      <span className="text-sm font-bold text-red-500 bg-red-950/50 px-3 py-1 rounded-full">CAPÍTULO 2</span>
+                      <h3 className="text-2xl font-bold">Como as Mulheres Funcionam</h3>
+                    </div>
+                    <ul className="space-y-3">
+                      <li className="flex items-start gap-3">
+                        <CheckCircle2 className="w-5 h-5 text-amber-400 flex-shrink-0 mt-0.5" />
+                        <span className="text-gray-300"><span className="text-white font-semibold">Entender o comportamento feminino</span> de forma estratégica e sem julgamentos</span>
+                      </li>
+                      <li className="flex items-start gap-3">
+                        <CheckCircle2 className="w-5 h-5 text-amber-400 flex-shrink-0 mt-0.5" />
+                        <span className="text-gray-300">Saber <span className="text-white font-semibold">exatamente como agir</span> em cada situação e momento</span>
+                      </li>
+                      <li className="flex items-start gap-3">
+                        <CheckCircle2 className="w-5 h-5 text-amber-400 flex-shrink-0 mt-0.5" />
+                        <span className="text-gray-300">Dominar a <span className="text-white font-semibold">mente feminina</span> e nunca mais ser surpreendido</span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              {/* Capítulo 3 */}
+              <div className="bg-gradient-to-br from-red-950/20 to-black border border-red-900/30 p-8 rounded-xl hover:border-red-600/50 transition-all">
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 bg-gradient-to-br from-red-600 to-amber-600 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <Zap className="w-6 h-6 text-white" />
+                  </div>
+                  <div className="flex-1">
+                    <div className="flex items-center gap-3 mb-3">
+                      <span className="text-sm font-bold text-red-500 bg-red-950/50 px-3 py-1 rounded-full">CAPÍTULO 3</span>
+                      <h3 className="text-2xl font-bold">Atração</h3>
+                    </div>
+                    <ul className="space-y-3">
+                      <li className="flex items-start gap-3">
+                        <CheckCircle2 className="w-5 h-5 text-amber-400 flex-shrink-0 mt-0.5" />
+                        <span className="text-gray-300">Como <span className="text-white font-semibold">gerar interesse sem esforço</span> e de forma natural</span>
+                      </li>
+                      <li className="flex items-start gap-3">
+                        <CheckCircle2 className="w-5 h-5 text-amber-400 flex-shrink-0 mt-0.5" />
+                        <span className="text-gray-300">Desenvolver <span className="text-white font-semibold">linguagem corporal dominante</span> que atrai atenção</span>
+                      </li>
+                      <li className="flex items-start gap-3">
+                        <CheckCircle2 className="w-5 h-5 text-amber-400 flex-shrink-0 mt-0.5" />
+                        <span className="text-gray-300">Como <span className="text-white font-semibold">abordar sem parecer inseguro</span> ou necessitado</span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              {/* Capítulo 4 */}
+              <div className="bg-gradient-to-br from-red-950/20 to-black border border-red-900/30 p-8 rounded-xl hover:border-red-600/50 transition-all">
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 bg-gradient-to-br from-red-600 to-amber-600 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <MessageCircle className="w-6 h-6 text-white" />
+                  </div>
+                  <div className="flex-1">
+                    <div className="flex items-center gap-3 mb-3">
+                      <span className="text-sm font-bold text-red-500 bg-red-950/50 px-3 py-1 rounded-full">CAPÍTULO 4</span>
+                      <h3 className="text-2xl font-bold">Conexão de Alto Valor</h3>
+                    </div>
+                    <ul className="space-y-3">
+                      <li className="flex items-start gap-3">
+                        <CheckCircle2 className="w-5 h-5 text-amber-400 flex-shrink-0 mt-0.5" />
+                        <span className="text-gray-300">Como criar <span className="text-white font-semibold">conversas envolventes e magnéticas</span></span>
+                      </li>
+                      <li className="flex items-start gap-3">
+                        <CheckCircle2 className="w-5 h-5 text-amber-400 flex-shrink-0 mt-0.5" />
+                        <span className="text-gray-300">Técnicas para <span className="text-white font-semibold">se destacar da maioria</span> dos homens</span>
+                      </li>
+                      <li className="flex items-start gap-3">
+                        <CheckCircle2 className="w-5 h-5 text-amber-400 flex-shrink-0 mt-0.5" />
+                        <span className="text-gray-300"><span className="text-white font-semibold">Gatilhos emocionais</span> que prendem a atenção dela</span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              {/* Capítulo 5 */}
+              <div className="bg-gradient-to-br from-red-950/20 to-black border border-red-900/30 p-8 rounded-xl hover:border-red-600/50 transition-all">
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 bg-gradient-to-br from-red-600 to-amber-600 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <Flame className="w-6 h-6 text-white" />
+                  </div>
+                  <div className="flex-1">
+                    <div className="flex items-center gap-3 mb-3">
+                      <span className="text-sm font-bold text-red-500 bg-red-950/50 px-3 py-1 rounded-full">CAPÍTULO 5</span>
+                      <h3 className="text-2xl font-bold">Sedução</h3>
+                    </div>
+                    <ul className="space-y-3">
+                      <li className="flex items-start gap-3">
+                        <CheckCircle2 className="w-5 h-5 text-amber-400 flex-shrink-0 mt-0.5" />
+                        <span className="text-gray-300">Como <span className="text-white font-semibold">conduzir naturalmente</span> para algo mais íntimo</span>
+                      </li>
+                      <li className="flex items-start gap-3">
+                        <CheckCircle2 className="w-5 h-5 text-amber-400 flex-shrink-0 mt-0.5" />
+                        <span className="text-gray-300">O <span className="text-white font-semibold">passo a passo completo</span> da sedução estratégica</span>
+                      </li>
+                      <li className="flex items-start gap-3">
+                        <CheckCircle2 className="w-5 h-5 text-amber-400 flex-shrink-0 mt-0.5" />
+                        <span className="text-gray-300">Como criar <span className="text-white font-semibold">tensão sexual</span> de forma natural</span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              {/* Capítulo 6 */}
+              <div className="bg-gradient-to-br from-red-950/20 to-black border border-red-900/30 p-8 rounded-xl hover:border-red-600/50 transition-all">
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 bg-gradient-to-br from-red-600 to-amber-600 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <Calendar className="w-6 h-6 text-white" />
+                  </div>
+                  <div className="flex-1">
+                    <div className="flex items-center gap-3 mb-3">
+                      <span className="text-sm font-bold text-red-500 bg-red-950/50 px-3 py-1 rounded-full">CAPÍTULO 6</span>
+                      <h3 className="text-2xl font-bold">Encontros</h3>
+                    </div>
+                    <ul className="space-y-3">
+                      <li className="flex items-start gap-3">
+                        <CheckCircle2 className="w-5 h-5 text-amber-400 flex-shrink-0 mt-0.5" />
+                        <span className="text-gray-300">Como agir no <span className="text-white font-semibold">primeiro encontro</span> com confiança total</span>
+                      </li>
+                      <li className="flex items-start gap-3">
+                        <CheckCircle2 className="w-5 h-5 text-amber-400 flex-shrink-0 mt-0.5" />
+                        <span className="text-gray-300">O que <span className="text-white font-semibold">falar, fazer e evitar</span> para garantir sucesso</span>
+                      </li>
+                      <li className="flex items-start gap-3">
+                        <CheckCircle2 className="w-5 h-5 text-amber-400 flex-shrink-0 mt-0.5" />
+                        <span className="text-gray-300">Como <span className="text-white font-semibold">manter o interesse depois</span> e criar conexão duradoura</span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
               </div>
             </div>
-
-            {/* Features */}
-            <div className="space-y-6">
-              <div className="flex items-start gap-4">
-                <div className="bg-yellow-500/20 text-yellow-500 p-2 rounded-lg">
-                  <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                  </svg>
-                </div>
-                <div>
-                  <h4 className="text-xl font-bold mb-1">Direto ao Ponto</h4>
-                  <p className="text-gray-400">Sem enrolação, sem teoria chata. Apenas o que funciona na prática.</p>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-4">
-                <div className="bg-yellow-500/20 text-yellow-500 p-2 rounded-lg">
-                  <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                  </svg>
-                </div>
-                <div>
-                  <h4 className="text-xl font-bold mb-1">Baseado em Psicologia</h4>
-                  <p className="text-gray-400">Comportamento real, testado e comprovado. Não é_pickup line_.</p>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-4">
-                <div className="bg-yellow-500/20 text-yellow-500 p-2 rounded-lg">
-                  <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                  </svg>
-                </div>
-                <div>
-                  <h4 className="text-xl font-bold mb-1">Atalho para o Jogo</h4>
-                  <p className="text-gray-400">Anos de aprendizado condensados em um guia que você lê em horas.</p>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-4">
-                <div className="bg-yellow-500/20 text-yellow-500 p-2 rounded-lg">
-                  <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                  </svg>
-                </div>
-                <div>
-                  <h4 className="text-xl font-bold mb-1">Privado e Seguro</h4>
-                  <p className="text-gray-400">Acesso 100% digital e discreto. Ninguém precisa saber.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="text-center mt-12">
-            <a 
-              href={CTA_LINK}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block bg-gradient-to-r from-red-600 to-red-500 text-white font-black text-lg px-10 py-4 rounded-lg shadow-xl shadow-red-500/30 hover:shadow-red-500/50 transform hover:scale-105 transition-all duration-300 uppercase"
-            >
-              🚀 Quero Acessar o Manual
-            </a>
           </div>
         </div>
       </section>
 
-      {/* O QUE VOCÊ VAI APRENDER */}
-      <section className="py-20 px-4 bg-black">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-5xl font-black mb-6">
-              O Que Você Vai <span className="text-red-500">Aprender</span>
+      {/* Transformação Antes x Depois */}
+      <section className="py-20 bg-gradient-to-b from-black to-red-950/10">
+        <div className="container mx-auto px-4">
+          <div className="max-w-5xl mx-auto">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl md:text-5xl font-black mb-6">
+                Sua <span className="text-red-500">Transformação</span> Começa Aqui
+              </h2>
+              <p className="text-xl text-gray-400">
+                Veja a diferença que o conhecimento estratégico faz
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-8">
+              {/* Antes */}
+              <div className="bg-gradient-to-br from-gray-900 to-black border-2 border-red-900/50 p-8 rounded-xl">
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="w-12 h-12 bg-red-600/20 rounded-full flex items-center justify-center">
+                    <X className="w-6 h-6 text-red-500" />
+                  </div>
+                  <h3 className="text-2xl font-bold text-red-400">ANTES</h3>
+                </div>
+                <ul className="space-y-4">
+                  <li className="flex items-start gap-3 text-gray-400">
+                    <div className="w-2 h-2 bg-red-500 rounded-full mt-2 flex-shrink-0"></div>
+                    <span>Sem confiança para abordar mulheres atraentes</span>
+                  </li>
+                  <li className="flex items-start gap-3 text-gray-400">
+                    <div className="w-2 h-2 bg-red-500 rounded-full mt-2 flex-shrink-0"></div>
+                    <span>Sem direção e sempre perdido nas interações</span>
+                  </li>
+                  <li className="flex items-start gap-3 text-gray-400">
+                    <div className="w-2 h-2 bg-red-500 rounded-full mt-2 flex-shrink-0"></div>
+                    <span>Rejeições constantes e frustração acumulada</span>
+                  </li>
+                  <li className="flex items-start gap-3 text-gray-400">
+                    <div className="w-2 h-2 bg-red-500 rounded-full mt-2 flex-shrink-0"></div>
+                    <span>Ignorado por mulheres lindas (nota 8, 9 e 10)</span>
+                  </li>
+                  <li className="flex items-start gap-3 text-gray-400">
+                    <div className="w-2 h-2 bg-red-500 rounded-full mt-2 flex-shrink-0"></div>
+                    <span>Insegurança e medo de falhar</span>
+                  </li>
+                </ul>
+              </div>
+
+              {/* Depois */}
+              <div className="bg-gradient-to-br from-amber-950/30 to-black border-2 border-amber-500 p-8 rounded-xl relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-amber-500/10 rounded-full blur-3xl"></div>
+                <div className="flex items-center gap-3 mb-6 relative z-10">
+                  <div className="w-12 h-12 bg-gradient-to-br from-amber-500 to-red-600 rounded-full flex items-center justify-center">
+                    <Crown className="w-6 h-6 text-white" />
+                  </div>
+                  <h3 className="text-2xl font-bold text-amber-400">DEPOIS</h3>
+                </div>
+                <ul className="space-y-4 relative z-10">
+                  <li className="flex items-start gap-3 text-gray-200">
+                    <CheckCircle2 className="w-5 h-5 text-amber-400 flex-shrink-0 mt-0.5" />
+                    <span><span className="font-bold text-white">Postura dominante</span> e confiança inabalável</span>
+                  </li>
+                  <li className="flex items-start gap-3 text-gray-200">
+                    <CheckCircle2 className="w-5 h-5 text-amber-400 flex-shrink-0 mt-0.5" />
+                    <span><span className="font-bold text-white">Controle total</span> das interações e situações</span>
+                  </li>
+                  <li className="flex items-start gap-3 text-gray-200">
+                    <CheckCircle2 className="w-5 h-5 text-amber-400 flex-shrink-0 mt-0.5" />
+                    <span><span className="font-bold text-white">Segurança e presença forte</span> em qualquer ambiente</span>
+                  </li>
+                  <li className="flex items-start gap-3 text-gray-200">
+                    <CheckCircle2 className="w-5 h-5 text-amber-400 flex-shrink-0 mt-0.5" />
+                    <span><span className="font-bold text-white">Atração de mulheres de alto valor</span> naturalmente</span>
+                  </li>
+                  <li className="flex items-start gap-3 text-gray-200">
+                    <CheckCircle2 className="w-5 h-5 text-amber-400 flex-shrink-0 mt-0.5" />
+                    <span><span className="font-bold text-white">Mentalidade de vencedor</span> em todas as áreas</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div className="text-center mt-12">
+              <a
+                href={paymentLink}
+                className="inline-flex items-center gap-3 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white px-10 py-6 rounded-lg text-xl font-bold transition-all transform hover:scale-105 shadow-2xl shadow-red-600/50"
+              >
+                <Crown className="w-6 h-6" />
+                COMEÇAR MINHA TRANSFORMAÇÃO AGORA
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Depoimentos */}
+      <section className="py-20 bg-black">
+        <div className="container mx-auto px-4">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl md:text-5xl font-black mb-6">
+                O que os homens estão dizendo
+              </h2>
+              <p className="text-xl text-gray-400">
+                Resultados reais de quem aplicou o método
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-3 gap-6">
+              <div className="bg-gradient-to-br from-gray-900 to-black border border-gray-800 p-6 rounded-xl">
+                <div className="flex gap-1 mb-4">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} className="w-5 h-5 fill-amber-400 text-amber-400" />
+                  ))}
+                </div>
+                <p className="text-gray-300 mb-4 italic">
+                  "Minha confiança mudou completamente. Agora eu sei exatamente como agir e o que falar. As mulheres percebem essa mudança."
+                </p>
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 bg-gradient-to-br from-red-600 to-amber-600 rounded-full flex items-center justify-center">
+                    <span className="text-white font-bold">R</span>
+                  </div>
+                  <div>
+                    <div className="font-bold">Rafael M.</div>
+                    <div className="text-sm text-gray-500">28 anos, SP</div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-gradient-to-br from-gray-900 to-black border border-gray-800 p-6 rounded-xl">
+                <div className="flex gap-1 mb-4">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} className="w-5 h-5 fill-amber-400 text-amber-400" />
+                  ))}
+                </div>
+                <p className="text-gray-300 mb-4 italic">
+                  "Eu achava que nunca ia conseguir sair com mulheres realmente bonitas. Esse manual me mostrou que o problema era minha mentalidade."
+                </p>
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 bg-gradient-to-br from-red-600 to-amber-600 rounded-full flex items-center justify-center">
+                    <span className="text-white font-bold">L</span>
+                  </div>
+                  <div>
+                    <div className="font-bold">Lucas P.</div>
+                    <div className="text-sm text-gray-500">25 anos, RJ</div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-gradient-to-br from-gray-900 to-black border border-gray-800 p-6 rounded-xl">
+                <div className="flex gap-1 mb-4">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} className="w-5 h-5 fill-amber-400 text-amber-400" />
+                  ))}
+                </div>
+                <p className="text-gray-300 mb-4 italic">
+                  "Direto, sem enrolação. Exatamente o que eu precisava. Agora sei como conduzir uma conversa e criar atração de verdade."
+                </p>
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 bg-gradient-to-br from-red-600 to-amber-600 rounded-full flex items-center justify-center">
+                    <span className="text-white font-bold">T</span>
+                  </div>
+                  <div>
+                    <div className="font-bold">Thiago S.</div>
+                    <div className="text-sm text-gray-500">31 anos, MG</div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-gradient-to-br from-gray-900 to-black border border-gray-800 p-6 rounded-xl">
+                <div className="flex gap-1 mb-4">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} className="w-5 h-5 fill-amber-400 text-amber-400" />
+                  ))}
+                </div>
+                <p className="text-gray-300 mb-4 italic">
+                  "Parei de ser ignorado. As técnicas de linguagem corporal e abordagem funcionam mesmo. Já saí com 2 mulheres incríveis esse mês."
+                </p>
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 bg-gradient-to-br from-red-600 to-amber-600 rounded-full flex items-center justify-center">
+                    <span className="text-white font-bold">M</span>
+                  </div>
+                  <div>
+                    <div className="font-bold">Marcelo F.</div>
+                    <div className="text-sm text-gray-500">27 anos, PR</div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-gradient-to-br from-gray-900 to-black border border-gray-800 p-6 rounded-xl">
+                <div className="flex gap-1 mb-4">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} className="w-5 h-5 fill-amber-400 text-amber-400" />
+                  ))}
+                </div>
+                <p className="text-gray-300 mb-4 italic">
+                  "Finalmente entendi como as mulheres pensam. Isso mudou tudo. Agora eu domino o jogo e sei exatamente o que fazer."
+                </p>
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 bg-gradient-to-br from-red-600 to-amber-600 rounded-full flex items-center justify-center">
+                    <span className="text-white font-bold">V</span>
+                  </div>
+                  <div>
+                    <div className="font-bold">Vitor A.</div>
+                    <div className="text-sm text-gray-500">29 anos, RS</div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-gradient-to-br from-gray-900 to-black border border-gray-800 p-6 rounded-xl">
+                <div className="flex gap-1 mb-4">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} className="w-5 h-5 fill-amber-400 text-amber-400" />
+                  ))}
+                </div>
+                <p className="text-gray-300 mb-4 italic">
+                  "Melhor investimento que já fiz. Por menos de 30 reais aprendi mais do que em anos tentando sozinho. Recomendo demais!"
+                </p>
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 bg-gradient-to-br from-red-600 to-amber-600 rounded-full flex items-center justify-center">
+                    <span className="text-white font-bold">G</span>
+                  </div>
+                  <div>
+                    <div className="font-bold">Gabriel L.</div>
+                    <div className="text-sm text-gray-500">26 anos, BA</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Oferta Principal */}
+      <section id="cta-section" className="py-20 bg-gradient-to-b from-black to-red-950/20">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <div className="bg-gradient-to-br from-red-950/40 to-black border-2 border-red-600/50 rounded-2xl p-8 md:p-12 relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-64 h-64 bg-red-600/10 rounded-full blur-3xl"></div>
+              <div className="absolute bottom-0 left-0 w-64 h-64 bg-amber-600/10 rounded-full blur-3xl"></div>
+              
+              <div className="relative z-10">
+                <div className="text-center mb-8">
+                  <div className="inline-flex items-center gap-2 bg-red-600/20 border border-red-600/50 px-4 py-2 rounded-full mb-6 animate-pulse">
+                    <Flame className="w-4 h-4 text-red-500" />
+                    <span className="text-red-400 text-sm font-semibold tracking-wide">OFERTA ESPECIAL</span>
+                  </div>
+                  
+                  <h2 className="text-4xl md:text-5xl font-black mb-4">
+                    Garanta Seu Acesso ao<br />
+                    <span className="bg-gradient-to-r from-amber-400 to-red-500 bg-clip-text text-transparent">
+                      Manual da Dominância
+                    </span>
+                  </h2>
+                </div>
+
+                <div className="bg-black/50 border border-amber-600/30 rounded-xl p-8 mb-8">
+                  <div className="text-center mb-6">
+                    <div className="text-gray-400 text-lg mb-2">Acesso completo por apenas</div>
+                    <div className="flex items-center justify-center gap-4 mb-4">
+                      <span className="text-gray-500 text-2xl line-through">R$ 97,00</span>
+                      <div>
+                        <div className="text-5xl md:text-6xl font-black text-transparent bg-gradient-to-r from-amber-400 to-red-500 bg-clip-text">
+                          R$ 29,90
+                        </div>
+                        <div className="text-gray-400 text-sm">à vista ou 12x de R$ 2,91</div>
+                      </div>
+                    </div>
+                    <div className="inline-block bg-red-600/20 border border-red-600/50 px-4 py-2 rounded-full">
+                      <span className="text-red-400 font-bold">70% DE DESCONTO</span>
+                    </div>
+                  </div>
+
+                  <div className="grid md:grid-cols-2 gap-4 mb-8">
+                    <div className="flex items-center gap-3 bg-gray-900/50 p-4 rounded-lg">
+                      <CheckCircle2 className="w-6 h-6 text-amber-400 flex-shrink-0" />
+                      <span className="text-gray-200">Acesso imediato e vitalício</span>
+                    </div>
+                    <div className="flex items-center gap-3 bg-gray-900/50 p-4 rounded-lg">
+                      <CheckCircle2 className="w-6 h-6 text-amber-400 flex-shrink-0" />
+                      <span className="text-gray-200">Formato PDF prático</span>
+                    </div>
+                    <div className="flex items-center gap-3 bg-gray-900/50 p-4 rounded-lg">
+                      <CheckCircle2 className="w-6 h-6 text-amber-400 flex-shrink-0" />
+                      <span className="text-gray-200">6 capítulos completos</span>
+                    </div>
+                    <div className="flex items-center gap-3 bg-gray-900/50 p-4 rounded-lg">
+                      <CheckCircle2 className="w-6 h-6 text-amber-400 flex-shrink-0" />
+                      <span className="text-gray-200">Conteúdo direto e prático</span>
+                    </div>
+                  </div>
+
+                  <div className="bg-gradient-to-r from-amber-950/30 to-red-950/30 border-l-4 border-amber-500 p-6 rounded-lg mb-8">
+                    <div className="flex items-start gap-3">
+                      <Shield className="w-6 h-6 text-amber-400 flex-shrink-0 mt-1" />
+                      <div>
+                        <div className="font-bold text-amber-400 mb-2">Garantia Incondicional de 7 Dias</div>
+                        <p className="text-gray-300 text-sm">
+                          Se você não ficar satisfeito por qualquer motivo, devolvemos 100% do seu dinheiro. Sem perguntas, sem burocracia.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <a
+                    href={paymentLink}
+                    className="w-full flex items-center justify-center gap-3 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white px-8 py-6 rounded-lg text-xl font-bold transition-all transform hover:scale-105 shadow-2xl shadow-red-600/50 mb-4"
+                  >
+                    <Crown className="w-6 h-6" />
+                    QUERO ACESSAR O MANUAL AGORA
+                    <ChevronRight className="w-6 h-6" />
+                  </a>
+
+                  <div className="flex items-center justify-center gap-2 text-sm text-gray-500">
+                    <Lock className="w-4 h-4" />
+                    Pagamento 100% seguro e criptografado
+                  </div>
+                </div>
+
+                <div className="bg-red-950/20 border border-red-600/30 rounded-lg p-6 text-center">
+                  <div className="flex items-center justify-center gap-2 mb-2">
+                    <Clock className="w-5 h-5 text-red-400" />
+                    <span className="text-red-400 font-bold">ATENÇÃO:</span>
+                  </div>
+                  <p className="text-gray-300">
+                    Este conteúdo pode sair do ar a qualquer momento. Não divulgamos esse tipo de material publicamente por tempo indefinido.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="py-20 bg-black">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl md:text-5xl font-black mb-6">
+                Perguntas Frequentes
+              </h2>
+              <p className="text-xl text-gray-400">
+                Tire suas últimas dúvidas
+              </p>
+            </div>
+
+            <div className="space-y-4">
+              <details className="bg-gradient-to-br from-gray-900 to-black border border-gray-800 rounded-xl p-6 group">
+                <summary className="font-bold text-lg cursor-pointer list-none flex items-center justify-between">
+                  <span>Como vou receber o Manual da Dominância?</span>
+                  <ChevronRight className="w-5 h-5 transition-transform group-open:rotate-90" />
+                </summary>
+                <p className="text-gray-400 mt-4 leading-relaxed">
+                  Após a confirmação do pagamento, você receberá um email com o link para download do PDF. O acesso é imediato e você pode ler de qualquer dispositivo.
+                </p>
+              </details>
+
+              <details className="bg-gradient-to-br from-gray-900 to-black border border-gray-800 rounded-xl p-6 group">
+                <summary className="font-bold text-lg cursor-pointer list-none flex items-center justify-between">
+                  <span>Funciona para qualquer idade?</span>
+                  <ChevronRight className="w-5 h-5 transition-transform group-open:rotate-90" />
+                </summary>
+                <p className="text-gray-400 mt-4 leading-relaxed">
+                  Sim! Os princípios de atração, confiança e comunicação funcionam para homens de qualquer idade. O conteúdo é baseado em comportamento humano e psicologia.
+                </p>
+              </details>
+
+              <details className="bg-gradient-to-br from-gray-900 to-black border border-gray-800 rounded-xl p-6 group">
+                <summary className="font-bold text-lg cursor-pointer list-none flex items-center justify-between">
+                  <span>É só teoria ou tem conteúdo prático?</span>
+                  <ChevronRight className="w-5 h-5 transition-transform group-open:rotate-90" />
+                </summary>
+                <p className="text-gray-400 mt-4 leading-relaxed">
+                  100% prático. Nada de enrolação ou teorias vazias. Você vai aprender exatamente o que fazer, como fazer e quando fazer em cada situação.
+                </p>
+              </details>
+
+              <details className="bg-gradient-to-br from-gray-900 to-black border border-gray-800 rounded-xl p-6 group">
+                <summary className="font-bold text-lg cursor-pointer list-none flex items-center justify-between">
+                  <span>E se eu não gostar do conteúdo?</span>
+                  <ChevronRight className="w-5 h-5 transition-transform group-open:rotate-90" />
+                </summary>
+                <p className="text-gray-400 mt-4 leading-relaxed">
+                  Você tem 7 dias de garantia incondicional. Se não gostar, basta pedir o reembolso e devolvemos 100% do seu dinheiro, sem perguntas.
+                </p>
+              </details>
+
+              <details className="bg-gradient-to-br from-gray-900 to-black border border-gray-800 rounded-xl p-6 group">
+                <summary className="font-bold text-lg cursor-pointer list-none flex items-center justify-between">
+                  <span>O pagamento é seguro?</span>
+                  <ChevronRight className="w-5 h-5 transition-transform group-open:rotate-90" />
+                </summary>
+                <p className="text-gray-400 mt-4 leading-relaxed">
+                  Totalmente seguro. Utilizamos plataforma criptografada e suas informações estão 100% protegidas. Aceitamos cartão de crédito e PIX.
+                </p>
+              </details>
+
+              <details className="bg-gradient-to-br from-gray-900 to-black border border-gray-800 rounded-xl p-6 group">
+                <summary className="font-bold text-lg cursor-pointer list-none flex items-center justify-between">
+                  <span>Por que o preço está tão baixo?</span>
+                  <ChevronRight className="w-5 h-5 transition-transform group-open:rotate-90" />
+                </summary>
+                <p className="text-gray-400 mt-4 leading-relaxed">
+                  Queremos que o máximo de homens tenha acesso a esse conhecimento. Preferimos vender mais barato e ajudar mais pessoas do que cobrar caro e limitar o acesso.
+                </p>
+              </details>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Final */}
+      <section className="py-20 bg-gradient-to-b from-black via-red-950/20 to-black">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-4xl md:text-6xl font-black mb-6">
+              Está pronto para<br />
+              <span className="bg-gradient-to-r from-amber-400 to-red-500 bg-clip-text text-transparent">
+                dominar o jogo?
+              </span>
             </h2>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-              6 capítulos transformadores que vão mudar sua vida
+            
+            <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
+              Você tem duas escolhas: continuar do jeito que está, ou investir em você mesmo e transformar sua vida com mulheres.
+            </p>
+
+            <div className="bg-gradient-to-br from-red-950/40 to-black border border-red-600/30 rounded-xl p-8 mb-8 max-w-2xl mx-auto">
+              <div className="text-5xl font-black text-transparent bg-gradient-to-r from-amber-400 to-red-500 bg-clip-text mb-2">
+                R$ 29,90
+              </div>
+              <div className="text-gray-400 mb-6">Investimento único • Acesso vitalício</div>
+              
+              <a
+                href={paymentLink}
+                className="w-full inline-flex items-center justify-center gap-3 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white px-10 py-6 rounded-lg text-xl font-bold transition-all transform hover:scale-105 shadow-2xl shadow-red-600/50 mb-4"
+              >
+                <Crown className="w-6 h-6" />
+                QUERO ACESSAR O MANUAL AGORA
+                <ChevronRight className="w-6 h-6" />
+              </a>
+
+              <div className="flex items-center justify-center gap-4 text-sm text-gray-500">
+                <div className="flex items-center gap-1">
+                  <Lock className="w-4 h-4" />
+                  Pagamento Seguro
+                </div>
+                <div className="flex items-center gap-1">
+                  <Shield className="w-4 h-4" />
+                  Garantia 7 Dias
+                </div>
+              </div>
+            </div>
+
+            <p className="text-gray-500 text-sm">
+              Não perca essa oportunidade. O acesso pode ser removido a qualquer momento.
             </p>
           </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {/* Capítulo 1 */}
-            <div className="bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-700 rounded-xl p-6 hover:border-yellow-500/50 transition-all duration-300 group">
-              <div className="bg-red-600 text-white font-black text-2xl w-12 h-12 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                1
-              </div>
-              <h3 className="text-xl font-bold text-yellow-500 mb-2">A SUA MENTE</h3>
-              <ul className="space-y-2 text-gray-300">
-                <li className="flex items-center gap-2">
-                  <span className="text-green-500">✓</span>
-                  ReprogRAR suas crenças limitantes
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="text-green-500">✓</span>
-                  Desenvolver confiança REAL
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="text-green-500">✓</span>
-                  Eliminar inseguranças invisíveis
-                </li>
-              </ul>
-            </div>
-
-            {/* Capítulo 2 */}
-            <div className="bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-700 rounded-xl p-6 hover:border-yellow-500/50 transition-all duration-300 group">
-              <div className="bg-red-600 text-white font-black text-2xl w-12 h-12 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                2
-              </div>
-              <h3 className="text-xl font-bold text-yellow-500 mb-2">COMO MULHERES FUNCIONAM</h3>
-              <ul className="space-y-2 text-gray-300">
-                <li className="flex items-center gap-2">
-                  <span className="text-green-500">✓</span>
-                  Entender o comportamento feminino
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="text-green-500">✓</span>
-                  Saber exatamente o que ela pensa
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="text-green-500">✓</span>
-                  Agir com precisão em cada situação
-                </li>
-              </ul>
-            </div>
-
-            {/* Capítulo 3 */}
-            <div className="bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-700 rounded-xl p-6 hover:border-yellow-500/50 transition-all duration-300 group">
-              <div className="bg-red-600 text-white font-black text-2xl w-12 h-12 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                3
-              </div>
-              <h3 className="text-xl font-bold text-yellow-500 mb-2">ATRAÇÃO NATURAL</h3>
-              <ul className="space-y-2 text-gray-300">
-                <li className="flex items-center gap-2">
-                  <span className="text-green-500">✓</span>
-                  Gerar interesse SEM esforço
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="text-green-500">✓</span>
-                  Linguagem corporal dominante
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="text-green-500">✓</span>
-                  Abordar sem parecer inseguro
-                </li>
-              </ul>
-            </div>
-
-            {/* Capítulo 4 */}
-            <div className="bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-700 rounded-xl p-6 hover:border-yellow-500/50 transition-all duration-300 group">
-              <div className="bg-red-600 text-white font-black text-2xl w-12 h-12 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                4
-              </div>
-              <h3 className="text-xl font-bold text-yellow-500 mb-2">CONEXÃO DE ALTO VALOR</h3>
-              <ul className="space-y-2 text-gray-300">
-                <li className="flex items-center gap-2">
-                  <span className="text-green-500">✓</span>
-                  Criar conversas envolventes
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="text-green-500">✓</span>
-                  Se destacar da maioria dos homens
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="text-green-500">✓</span>
-                  Gatilhos emocionais que prendem
-                </li>
-              </ul>
-            </div>
-
-            {/* Capítulo 5 */}
-            <div className="bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-700 rounded-xl p-6 hover:border-yellow-500/50 transition-all duration-300 group">
-              <div className="bg-red-600 text-white font-black text-2xl w-12 h-12 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                5
-              </div>
-              <h3 className="text-xl font-bold text-yellow-500 mb-2">SEDUÇÃO</h3>
-              <ul className="space-y-2 text-gray-300">
-                <li className="flex items-center gap-2">
-                  <span className="text-green-500">✓</span>
-                  Conduzir naturalmente para algo mais
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="text-green-500">✓</span>
-                  O passo a passo completo
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="text-green-500">✓</span>
-                  Aumentar a tensão sexual
-                </li>
-              </ul>
-            </div>
-
-            {/* Capítulo 6 */}
-            <div className="bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-700 rounded-xl p-6 hover:border-yellow-500/50 transition-all duration-300 group">
-              <div className="bg-red-600 text-white font-black text-2xl w-12 h-12 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                6
-              </div>
-              <h3 className="text-xl font-bold text-yellow-500 mb-2">ENCONTROS</h3>
-              <ul className="space-y-2 text-gray-300">
-                <li className="flex items-center gap-2">
-                  <span className="text-green-500">✓</span>
-                  Como agir no primeiro encontro
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="text-green-500">✓</span>
-                  O que falar, fazer e evitar
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="text-green-500">✓</span>
-                  Manter o interesse depois
-                </li>
-              </ul>
-            </div>
-          </div>
         </div>
       </section>
 
-      {/* TRANSFORMAÇÃO */}
-      <section className="py-20 px-4 bg-gradient-to-b from-black to-gray-900">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-5xl font-black mb-6">
-              Sua <span className="text-red-500">Transformação</span>
-            </h2>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-              Veja como sua vida vai mudar após aplicar o Manual
-            </p>
+      {/* Footer */}
+      <footer className="bg-black border-t border-gray-900 py-8">
+        <div className="container mx-auto px-4">
+          <div className="text-center text-gray-500 text-sm">
+            <p className="mb-2">© 2024 Manual da Dominância. Todos os direitos reservados.</p>
+            <p>Este produto não garante resultados. Os resultados podem variar de pessoa para pessoa.</p>
           </div>
-
-          <div className="grid md:grid-cols-2 gap-8">
-            {/* ANTES */}
-            <div className="bg-gray-800/30 border border-gray-700 rounded-2xl p-8">
-              <h3 className="text-2xl font-black text-red-500 mb-6 flex items-center gap-3">
-                <span className="text-3xl">❌</span> ANTES
-              </h3>
-              <ul className="space-y-4">
-                <li className="flex items-center gap-3 text-gray-300">
-                  <span className="text-red-500 text-xl">✗</span>
-                  Sem confiança, sempre inseguro
-                </li>
-                <li className="flex items-center gap-3 text-gray-300">
-                  <span className="text-red-500 text-xl">✗</span>
-                  Sem direção nas interações
-                </li>
-                <li className="flex items-center gap-3 text-gray-300">
-                  <span className="text-red-500 text-xl">✗</span>
-                  Rejeições constantes
-                </li>
-                <li className="flex items-center gap-3 text-gray-300">
-                  <span className="text-red-500 text-xl">✗</span>
-                  Mulheres te ignoram
-                </li>
-                <li className="flex items-center gap-3 text-gray-300">
-                  <span className="text-red-500 text-xl">✗</span>
-                  Friendzone eterno
-                </li>
-                <li className="flex items-center gap-3 text-gray-300">
-                  <span className="text-red-500 text-xl">✗</span>
-                  Medo de abordar
-                </li>
-              </ul>
-            </div>
-
-            {/* DEPOIS */}
-            <div className="bg-gradient-to-br from-gray-800 to-gray-900 border border-yellow-500/50 rounded-2xl p-8 shadow-xl shadow-yellow-500/10">
-              <h3 className="text-2xl font-black text-yellow-500 mb-6 flex items-center gap-3">
-                <span className="text-3xl">✅</span> DEPOIS
-              </h3>
-              <ul className="space-y-4">
-                <li className="flex items-center gap-3 text-gray-300">
-                  <span className="text-yellow-500 text-xl">✓</span>
-                  Postura dominante natural
-                </li>
-                <li className="flex items-center gap-3 text-gray-300">
-                  <span className="text-yellow-500 text-xl">✓</span>
-                  Controle total das interações
-                </li>
-                <li className="flex items-center gap-3 text-gray-300">
-                  <span className="text-yellow-500 text-xl">✓</span>
-                  Segurança e presença forte
-                </li>
-                <li className="flex items-center gap-3 text-gray-300">
-                  <span className="text-yellow-500 text-xl">✓</span>
-                  Mulheres te procuram
-                </li>
-                <li className="flex items-center gap-3 text-gray-300">
-                  <span className="text-yellow-500 text-xl">✓</span>
-                  Várias opções de mulheres
-                </li>
-                <li className="flex items-center gap-3 text-gray-300">
-                  <span className="text-yellow-500 text-xl">✓</span>
-                  Aborda com tranquilidade
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* DEPOIMENTOS */}
-      <section className="py-20 px-4 bg-gradient-to-b from-gray-900 to-black">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-5xl font-black mb-6">
-              O Que Estão <span className="text-yellow-500">Dizendo</span>
-            </h2>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-              Resultados reais de quem aplicou o Manual
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {/* Depoimento 1 */}
-            <div className="bg-gray-800/50 border border-gray-700 rounded-xl p-6">
-              <div className="flex items-center gap-1 mb-4">
-                {[...Array(5)].map((_, i) => (
-                  <span key={i} className="text-yellow-500 text-xl">★</span>
-                ))}
-              </div>
-              <p className="text-gray-300 mb-4 italic">
-                "Minha confiança mudou completamente. Antes eu travava quando via uma mulher bonita. Hoje eu sou eu mesmo em qualquer situação."
-              </p>
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 bg-gradient-to-br from-red-500 to-yellow-500 rounded-full flex items-center justify-center font-bold">
-                  R
-                </div>
-                <div>
-                  <p className="font-bold">Rafael, 26</p>
-                  <p className="text-gray-500 text-sm">São Paulo, SP</p>
-                </div>
-              </div>
-            </div>
-
-            {/* Depoimento 2 */}
-            <div className="bg-gray-800/50 border border-gray-700 rounded-xl p-6">
-              <div className="flex items-center gap-1 mb-4">
-                {[...Array(5)].map((_, i) => (
-                  <span key={i} className="text-yellow-500 text-xl">★</span>
-                ))}
-              </div>
-              <p className="text-gray-300 mb-4 italic">
-                "Agora eu sei exatamente o que fazer. O capítulo de conexão mudou meu jogo. Finalmente entendi como manter uma conversationa fluindo."
-              </p>
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 bg-gradient-to-br from-red-500 to-yellow-500 rounded-full flex items-center justify-center font-bold">
-                  L
-                </div>
-                <div>
-                  <p className="font-bold">Lucas, 29</p>
-                  <p className="text-gray-500 text-sm">Rio de Janeiro, RJ</p>
-                </div>
-              </div>
-            </div>
-
-            {/* Depoimento 3 */}
-            <div className="bg-gray-800/50 border border-gray-700 rounded-xl p-6">
-              <div className="flex items-center gap-1 mb-4">
-                {[...Array(5)].map((_, i) => (
-                  <span key={i} className="text-yellow-500 text-xl">★</span>
-                ))}
-              </div>
-              <p className="text-gray-300 mb-4 italic">
-                "Estava na friendzone há 2 anos. 3 semanas após o Manual, saí dela completamente. As dicas sobre mindset são ouro puro."
-              </p>
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 bg-gradient-to-br from-red-500 to-yellow-500 rounded-full flex items-center justify-center font-bold">
-                  M
-                </div>
-                <div>
-                  <p className="font-bold">Marcos, 31</p>
-                  <p className="text-gray-500 text-sm">Belo Horizonte, MG</p>
-                </div>
-              </div>
-            </div>
-
-            {/* Depoimento 4 */}
-            <div className="bg-gray-800/50 border border-gray-700 rounded-xl p-6">
-              <div className="flex items-center gap-1 mb-4">
-                {[...Array(5)].map((_, i) => (
-                  <span key={i} className="text-yellow-500 text-xl">★</span>
-                ))}
-              </div>
-              <p className="text-gray-300 mb-4 italic">
-                "Nunca tinha abordado uma mulher na rua. Aprendi a linguagem corporal certa e já peguei 3 números essa semana."
-              </p>
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 bg-gradient-to-br from-red-500 to-yellow-500 rounded-full flex items-center justify-center font-bold">
-                  G
-                </div>
-                <div>
-                  <p className="font-bold">Gabriel, 23</p>
-                  <p className="text-gray-500 text-sm">Curitiba, PR</p>
-                </div>
-              </div>
-            </div>
-
-            {/* Depoimento 5 */}
-            <div className="bg-gray-800/50 border border-gray-700 rounded-xl p-6">
-              <div className="flex items-center gap-1 mb-4">
-                {[...Array(5)].map((_, i) => (
-                  <span key={i} className="text-yellow-500 text-xl">★</span>
-                ))}
-              </div>
-              <p className="text-gray-300 mb-4 italic">
-                "O melhor investimento que fiz. Por menos de 30 reais mudei minha vida social. Vale cada centavo."
-              </p>
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 bg-gradient-to-br from-red-500 to-yellow-500 rounded-full flex items-center justify-center font-bold">
-                  B
-                </div>
-                <div>
-                  <p className="font-bold">Bruno, 27</p>
-                  <p className="text-gray-500 text-sm">Salvador, BA</p>
-                </div>
-              </div>
-            </div>
-
-            {/* Depoimento 6 */}
-            <div className="bg-gray-800/50 border border-gray-700 rounded-xl p-6">
-              <div className="flex items-center gap-1 mb-4">
-                {[...Array(5)].map((_, i) => (
-                  <span key={i} className="text-yellow-500 text-xl">★</span>
-                ))}
-              </div>
-              <p className="text-gray-300 mb-4 italic">
-                "Finalmente entendi como mulheres pensam. O capítulo 2 sozinho já vale tudo. Recomendo demais!"
-              </p>
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 bg-gradient-to-br from-red-500 to-yellow-500 rounded-full flex items-center justify-center font-bold">
-                  T
-                </div>
-                <div>
-                  <p className="font-bold">Thiago, 30</p>
-                  <p className="text-gray-500 text-sm">Brasília, DF</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* OFERTA */}
-      <section className="py-20 px-4 bg-black relative overflow-hidden">
-        {/* Background Effects */}
-        <div className="absolute inset-0 bg-gradient-to-r from-red-600/10 via-transparent to-yellow-600/10"></div>
-        
-        <div className="max-w-4xl mx-auto relative z-10">
-          <div className="text-center mb-12">
-            <div className="inline-block bg-gradient-to-r from-red-600 to-red-500 text-white text-sm font-bold px-6 py-2 rounded-full uppercase tracking-wider mb-6 animate-pulse">
-              🔥 OFERTA ESPECIAL
-            </div>
-            <h2 className="text-3xl md:text-5xl font-black mb-6">
-              Acesso Completo ao<br />
-              <span className="bg-gradient-to-r from-red-500 to-yellow-500 bg-clip-text text-transparent">
-                Manual da Dominância
-              </span>
-            </h2>
-          </div>
-
-          {/* Card Oferta */}
-          <div className="bg-gradient-to-br from-gray-800 to-gray-900 border-2 border-yellow-500/50 rounded-3xl p-8 md:p-12 shadow-2xl shadow-yellow-500/20">
-            {/* Preço */}
-            <div className="text-center mb-8">
-              <p className="text-gray-400 line-through text-xl mb-2">De R$ 97,00</p>
-              <div className="flex items-center justify-center gap-2">
-                <span className="text-gray-400 text-2xl">Por apenas</span>
-                <span className="bg-gradient-to-r from-red-500 to-yellow-500 bg-clip-text text-transparent text-6xl md:text-7xl font-black">
-                  R$ 29,90
-                </span>
-              </div>
-              <p className="text-gray-400 mt-2">Pagamento único • Acesso vitalício</p>
-            </div>
-
-            {/* O que está incluído */}
-            <div className="space-y-4 mb-8">
-              <div className="flex items-center gap-3 bg-gray-800/50 rounded-lg p-4">
-                <span className="text-green-500 text-2xl">✓</span>
-                <span className="text-gray-200">Manual Completo em PDF (6 capítulos)</span>
-              </div>
-              <div className="flex items-center gap-3 bg-gray-800/50 rounded-lg p-4">
-                <span className="text-green-500 text-2xl">✓</span>
-                <span className="text-gray-200">Acesso Imediato após compra</span>
-              </div>
-              <div className="flex items-center gap-3 bg-gray-800/50 rounded-lg p-4">
-                <span className="text-green-500 text-2xl">✓</span>
-                <span className="text-gray-200">Garantia de 7 dias incondicional</span>
-              </div>
-              <div className="flex items-center gap-3 bg-gray-800/50 rounded-lg p-4">
-                <span className="text-green-500 text-2xl">✓</span>
-                <span className="text-gray-200">Acesso 100% privado e seguro</span>
-              </div>
-            </div>
-
-            {/* Garantia Badge */}
-            <div className="bg-gray-800/80 border border-green-500/50 rounded-xl p-6 text-center mb-8">
-              <div className="text-5xl mb-2">🛡️</div>
-              <h4 className="text-xl font-bold text-green-500 mb-2">Garantia de 7 Dias</h4>
-              <p className="text-gray-300">
-                Se não gostar do conteúdo, devolvemos 100% do seu dinheiro. Sem perguntas, sem burocracia.
-              </p>
-            </div>
-
-            {/* CTA Button */}
-            <a 
-              href={CTA_LINK}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="block w-full bg-gradient-to-r from-red-600 to-red-500 text-white font-black text-xl md:text-2xl py-6 px-8 rounded-xl shadow-2xl shadow-red-500/40 hover:shadow-red-500/60 transform hover:scale-105 transition-all duration-300 uppercase tracking-wider text-center"
-            >
-              🔥 Quero Acessar o Manual Agora
-            </a>
-
-            {/* Pagamento Info */}
-            <div className="flex flex-wrap justify-center gap-4 mt-6 text-gray-400 text-sm">
-              <span className="flex items-center gap-2">
-                🔒 Compra segura
-              </span>
-              <span className="flex items-center gap-2">
-                💳 Cartão, PIX ou Boleto
-              </span>
-              <span className="flex items-center gap-2">
-                ⚡ Acesso imediato
-              </span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ESCASSEZ */}
-      <section className="py-16 px-4 bg-gradient-to-b from-black to-gray-900 border-t border-gray-800">
-        <div className="max-w-4xl mx-auto">
-          <div className="bg-gradient-to-r from-red-600/20 to-yellow-600/20 border border-red-500/30 rounded-2xl p-8 text-center">
-            <h3 className="text-2xl md:text-3xl font-black mb-6">
-              ⚠️ Leia Antes de Continuar
-            </h3>
-            <div className="space-y-4 text-gray-200 max-w-2xl mx-auto">
-              <p className="flex items-center justify-center gap-3">
-                <span className="text-red-500 font-bold">🚨</span>
-                Este conteúdo <span className="text-red-500 font-bold">não é divulgado publicamente</span>
-              </p>
-              <p className="flex items-center justify-center gap-3">
-                <span className="text-red-500 font-bold">⏰</span>
-                O acesso pode sair do ar a qualquer momento
-              </p>
-              <p className="flex items-center justify-center gap-3">
-                <span className="text-red-500 font-bold">🔒</span>
-                É um <span className="text-red-500 font-bold">conteúdo restrito e exclusivo</span>
-              </p>
-              <p className="flex items-center justify-center gap-3">
-                <span className="text-red-500 font-bold">📈</span>
-                Esse preço promocional pode acabar em breve
-              </p>
-            </div>
-            <a 
-              href={CTA_LINK}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block mt-8 bg-gradient-to-r from-yellow-600 to-yellow-500 text-black font-black text-lg px-10 py-4 rounded-lg shadow-xl shadow-yellow-500/30 hover:shadow-yellow-500/50 transform hover:scale-105 transition-all duration-300 uppercase"
-            >
-              🔥 Garantir Meu Acesso Agora
-            </a>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA FINAL */}
-      <section className="py-20 px-4 bg-gradient-to-b from-gray-900 to-black">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl md:text-5xl font-black mb-6">
-            Está Pronto para<br />
-            <span className="bg-gradient-to-r from-red-500 to-yellow-500 bg-clip-text text-transparent">
-              Dominar o Jogo?
-            </span>
-          </h2>
-          <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
-            Não deixe para depois. A cada dia que passa, você continua na mesma posição. 
-            A transformação começa com uma decisão.
-          </p>
-          
-          {/* Trigger Phrases */}
-          <div className="flex flex-wrap justify-center gap-4 mb-10">
-            <span className="bg-red-600/20 border border-red-500/50 px-5 py-3 rounded-lg text-red-400 font-semibold">
-              Como conquistar mulheres nota 8, 9 e 10
-            </span>
-            <span className="bg-yellow-600/20 border border-yellow-500/50 px-5 py-3 rounded-lg text-yellow-400 font-semibold">
-              Conquiste sua melhor versão
-            </span>
-            <span className="bg-red-600/20 border border-red-500/50 px-5 py-3 rounded-lg text-red-400 font-semibold">
-              Não seja mais ignorado por mulheres lindas
-            </span>
-            <span className="bg-yellow-600/20 border border-yellow-500/50 px-5 py-3 rounded-lg text-yellow-400 font-semibold">
-              Domine a mente feminina
-            </span>
-          </div>
-
-          <a 
-            href={CTA_LINK}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-block bg-gradient-to-r from-red-600 to-red-500 text-white font-black text-xl md:text-2xl px-12 py-6 rounded-lg shadow-2xl shadow-red-500/40 hover:shadow-red-500/60 transform hover:scale-105 transition-all duration-300 uppercase tracking-wider animate-pulse"
-          >
-            🔥 QUERO ACESSAR O MANUAL AGORA
-          </a>
-
-          <p className="text-gray-500 mt-6 text-sm">
-            Compra 100% segura • Acesso imediato • Garantia de 7 dias
-          </p>
-        </div>
-      </section>
-
-      {/* FOOTER */}
-      <footer className="py-8 px-4 bg-black border-t border-gray-800">
-        <div className="max-w-6xl mx-auto text-center">
-          <p className="text-gray-500 text-sm mb-2">
-            © 2024 Manual da Dominância. Todos os direitos reservados.
-          </p>
-          <p className="text-gray-600 text-xs">
-            Este produto é vendido e entregue digitalmente. Ao adquirir, você concorda com nossos termos de uso.
-          </p>
-          <p className="text-gray-600 text-xs mt-2">
-            Os resultados podem variar de pessoa para pessoa. Este produto não garante resultados específicos.
-          </p>
         </div>
       </footer>
-
-      {/* Scroll to Top Button */}
-      {showScrollTop && (
-        <button
-          onClick={scrollToTop}
-          className="fixed bottom-24 md:bottom-8 right-8 bg-red-600 text-white p-3 rounded-full shadow-lg hover:bg-red-500 transition-all duration-300 z-40 hidden md:block"
-        >
-          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 10l7-7m0 0l7 7m-7-7v18" />
-          </svg>
-        </button>
-      )}
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
